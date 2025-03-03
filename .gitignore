@@ -1,1 +1,4 @@
 *.o
+ProceduralWorldGenerator
+ProceduralWorldGenerator.*
+world.txt
