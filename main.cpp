@@ -145,13 +145,17 @@ public:
 
   void display()
   {
+    if (!world.size())
+    {
+      cout << "\nПустая карта\n";
+      return;
+    }
+
     cout << endl;
     for (const auto &line : world)
     {
       for (const auto &c : line)
-      {
         cout << c;
-      }
       cout << endl;
     }
     cout << "Размер карты: " << width << "x" << height << endl;
@@ -163,9 +167,7 @@ public:
     for (const auto &line : world)
     {
       for (const auto &c : line)
-      {
         file << c;
-      }
       file << "\n";
     }
     file.close();
@@ -222,12 +224,12 @@ int main()
   string filename = "world.txt";
   int width, height;
 
-  cout << "Загрузка из файла..." << endl;
+  cout << "Загрузка мира из файла..." << endl;
   world.load_from_file(filename);
   world.display();
   world.clean_map();
 
-  cout << "\nВведите ширину и высоту мира: ";
+  cout << "\nВведите ширину и высоту мира (пример: 15 5): ";
   cin >> width >> height;
 
   cout << "\nГенерация мира...\n";
